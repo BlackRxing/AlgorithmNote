@@ -1,15 +1,17 @@
-public class _200NumberOfIslands {
-    int row;
-    int clo;
+package queue_stack;
 
-    public void main(String[] args) {
+class _200NumberOfIslands {
+    static int row;
+    static int clo;
+
+    public static void main(String[] args) {
         char[][] grid={{'1','1','1','1','0'},
                 {'1','1','0','1','0'},
                 {'1','1','1','0','0'},
-                {'0','0','0','0','0'}};
+                {'0','0','0','0','1'}};
         System.out.println(numIslands(grid));
     }
-    public int numIslands(char[][] grid) {
+    public static int numIslands(char[][] grid) {
 
         if(grid==null||grid.length==0){
             return 0;
@@ -28,7 +30,7 @@ public class _200NumberOfIslands {
         return answer;
 
     }
-    void dfs(char[][] grid,int x,int y){
+    static void dfs(char[][] grid,int x,int y){
         if(x<0||x>=row||y<0||y>=clo||grid[x][y]=='0'){
             return;
         }
