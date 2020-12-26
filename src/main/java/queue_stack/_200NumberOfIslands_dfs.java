@@ -1,6 +1,6 @@
 package queue_stack;
 
-class _200NumberOfIslands {
+class _200NumberOfIslands_dfs {
     static int row;
     static int clo;
 
