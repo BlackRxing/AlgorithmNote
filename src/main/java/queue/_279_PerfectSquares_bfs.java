@@ -1,4 +1,4 @@
-package queue_stack;
+package queue;
 
 import java.util.ArrayList;
 import java.util.HashSet;

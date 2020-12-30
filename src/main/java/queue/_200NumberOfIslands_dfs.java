@@ -1,4 +1,4 @@
-package queue_stack;
+package queue;
 
 class _200NumberOfIslands_dfs {
     static int row;
