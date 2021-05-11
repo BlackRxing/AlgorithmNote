@@ -36,3 +36,31 @@ class Solution {
          this.right = right;
       }
   }
+
+  //统一格式
+//  class Solution {
+//      public List<Integer> postorderTraversal(TreeNode root) {
+//          List<Integer> list=new ArrayList();
+//          Stack<TreeNode> stack=new Stack();
+//          stack.add(root);
+//          if(root==null){
+//              return list;
+//          }
+//          while(!stack.isEmpty()){
+//              TreeNode cur=stack.peek();
+//              if(cur!=null){
+//                  stack.push(null);
+//                  if(cur.right!=null){
+//                      stack.push(cur.right);
+//                  }
+//                  if(cur.left!=null){
+//                      stack.push(cur.left);
+//                  }
+//              }else{
+//                  stack.pop();
+//                  list.add(stack.pop().val);
+//              }
+//          }
+//          return list;
+//      }
+//  }
