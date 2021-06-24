@@ -7,7 +7,7 @@ public class Point {
         x=xloc;
         y=yloc;
     }
-
+//hashmap的key为对象时需要重写对象的equals和hashcode两个方法，因为查找key时先调用hashcode后调用equals
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
