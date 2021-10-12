@@ -16,7 +16,7 @@ public class _77_combinations {
                 result.add(new ArrayList<>(path));   //这一步老是忘记
                 return;
             }
-            for(int i=pos;i<=path.size()+n-k+1;i++){
+            for(int i=pos;i<=path.size()+n-k+1;i++){  //剪枝提高效率，当n=4，k=4时，比如第一层遍历到2 3 4就没有必要了，长度不够
                 path.add(i);
                 combine(n,k,i+1);
                 path.remove(path.size()-1);
