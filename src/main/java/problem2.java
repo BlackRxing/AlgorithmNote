@@ -27,6 +27,8 @@ public class problem2 {
         convertLocation(points);
         process();
     }
+    //输入：两点a,b的经纬度
+    //输出：以米为单位的两点之间的距离
     static double convertDistance(double ax,double ay,double bx,double by){
         double xgap=Math.toRadians(bx)-Math.toRadians(ax);
         double ygap=Math.toRadians(by)-Math.toRadians(ay);
@@ -34,6 +36,7 @@ public class problem2 {
         double r=6371;
         return 1000*r*2*Math.asin(Math.sqrt(distance));
     }
+    //将所有经纬度坐标转化为以点集重心点为中心的以米为单位的坐标
     static void  convertLocation(double[][] points){
         double xsum=0;
         double ysum=0;
@@ -52,16 +55,18 @@ public class problem2 {
             t++;
         }
     }
-
+    //计算i，j两点之间的距离，单位为米
     static double length(int i,int j){
         return Math.sqrt(Math.pow(pointsxy[i][0]-pointsxy[j][0],2)+Math.pow(pointsxy[i][1]-pointsxy[j][1],2));
     }
+    //清空hashmap，向内添加序号为0~count的点，方格间隔为step
     static void newHashMap(int count,double step){
         map.clear();
         for(int i=0;i<=count;i++){
             insertMap(i,step);
         }
     }
+    //向hashmap中插入序号为i的点
     static void insertMap(int i,double step){
         int[] pos=new int[2];
         pos[0]=(int)(pointsxy[i][0]/step);
@@ -78,6 +83,7 @@ public class problem2 {
         }
 
     }
+    //扫描该点所在方格和周围共九个方格的所有点，输入最小距离以及点对
     static double[] scan(int i,double step){
         int x=(int)(pointsxy[i][0]/step);
         int y=(int)(pointsxy[i][1]/step);
@@ -98,14 +104,14 @@ public class problem2 {
         }
         return new double[]{step,i,point2};
     }
-
+    //随机选择前两个点的距离为初始间隔，依次加入点并进行扫描，如果该点有更小的间隔则从头更新hashmap，如果没有则直接加入该点，直到所有点加入到hashmap
     static void process(){
         double step=length(0,1);
         System.out.println(step+"step");
         int point1=0,point2=1;
         newHashMap(1,step);
         for(int i=2;i<num;i++){
-            double[] rwqees=scan(i,step);
+            double[] res=scan(i,step);
             if(res[0]<step){
                 point1=(int) res[1];
                 point2=(int) res[2];
