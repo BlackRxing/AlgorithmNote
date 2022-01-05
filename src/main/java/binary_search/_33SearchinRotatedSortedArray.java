@@ -1,8 +1,46 @@
 package binary_search;
 
 
-
+//主要注意两个问题，一个是是否一定能收敛，如果中间取下mid=（left+right）/2,那么left=mid就要注意可能一直无法收敛（达到left=right），
+//尽量把三种情况分开写！考试时不一定想得出第二种写法
 class Solution35 {
+    class Solution {
+        public int search(int[] nums, int target) {
+            int left=0,right=nums.length-1;
+            int mid=0;
+            while(left<right){
+                System.out.println(left+" "+right);
+                mid=(left+right)/2;
+                if(nums[mid]<nums[right]){
+                    if(nums[mid]<target){
+                        if(target<=nums[right]){
+                            left=mid+1;
+                        }else{
+                            right=mid-1;
+                        }
+                    }else{
+                        right=mid;
+                    }
+                }else{
+                    if(nums[mid]<target){
+                        left=mid+1;
+                    }else if(nums[mid]>target){
+                        if(target>=nums[left]){
+                            right=mid-1;
+                        }else{
+                            left=mid+1;
+                        }
+                    }else{     //这个else非常必要，如果不加的话没法收敛
+                        return mid;
+                    }
+                }
+            }
+            if(nums[left]==target){
+                return left;
+            }
+            return -1;
+        }
+    }
 
     public int search(int[] nums, int target) {
         int len = nums.length;
